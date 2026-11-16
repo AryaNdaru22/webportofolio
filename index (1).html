@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil - Arya Pramudia Surya Ndaru</title>
+  <meta name="description" content="Profil pribadi Arya Pramudia Surya Ndaru - [JULUKAN]">
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --accent: #25d366;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    section { padding: 72px 20px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    h2 { font-size: 1.8rem; margin-bottom: 18px; color: var(--primary-dark); }
+    h2 span { color: var(--primary); }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      text-align: center;
+      padding: 90px 20px 80px;
+    }
+    .hero img {
+      width: 180px; height: 180px; object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid rgba(255,255,255,0.9);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      margin-bottom: 22px;
+    }
+    .hero h1 { font-size: 2.4rem; margin-bottom: 6px; }
+    .hero .julukan {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero p.ringkasan { max-width: 620px; margin: 0 auto; opacity: 0.95; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+    .card h3 { color: var(--primary); margin-bottom: 10px; }
+    .card ul { padding-left: 20px; }
+    .card li { margin-bottom: 6px; }
+
+    /* Skills */
+    .skills {
+      display: flex; flex-wrap: wrap; gap: 12px;
+    }
+    .skill {
+      background: #eff6ff;
+      color: var(--primary-dark);
+      border: 1px solid #bfdbfe;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .project {
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+    .project .thumb {
+      height: 160px;
+      background: linear-gradient(135deg, #93c5fd, #3b82f6);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 1.1rem;
+    }
+    .project .body { padding: 20px; }
+    .project h3 { margin-bottom: 6px; }
+    .project p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Contact / CTA */
+    .contact {
+      background: var(--primary-dark);
+      color: #fff;
+      text-align: center;
+    }
+    .contact h2 { color: #fff; }
+    .contact p { max-width: 560px; margin: 0 auto 28px; opacity: 0.92; }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 16px 32px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5); }
+    .btn-wa svg { width: 24px; height: 24px; fill: #fff; }
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (min-width: 720px) {
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: 3rem; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 56px 16px; }
+      .hero h1 { font-size: 1.9rem; }
+      .btn-wa { font-size: 1rem; padding: 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero" id="beranda">
+    <img src="foto-profil.jpg" alt="Foto profil Arya Pramudia Surya Ndaru">
+    <h1>Arya Pramudia Surya Ndaru</h1>
+    <span class="julukan">[JULUKAN, misal: Web Developer Enthusiast]</span>
+    <p class="ringkasan">
+      [Ringkasan singkat tentang diri Anda dalam 1–2 kalimat. Contoh: Mahasiswa Teknik Informatika yang gemar membangun website sederhana dan solusi digital untuk membantu usaha lokal.]
+    </p>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="tentang">
+    <div class="container">
+      <h2>Tentang <span>Saya</span></h2>
+      <div class="about-grid">
+        <div class="card">
+          <h3>Latar Belakang Pendidikan</h3>
+          <ul>
+            <li><strong>Politeknik Negeri Madiun</strong> - Prodi D3 Teknologi Informasi (sedang berjalan)</li>
+            <li>SMKN 1 Kota Madiun - Jurusan Teknik Kendaraan Ringan Otomotif (TKRO)</li>
+            <li>MTsN Kota Madiun</li>
+            <li>MIN Demangan, Kota Madiun</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Minat & Hobi</h3>
+          <p>
+            [Ceritakan minat dan hobi yang relevan dengan bidang IT, misal: mengikuti perkembangan teknologi, belajar desain UI/UX, atau mengembangkan proyek kecil di waktu luang.]
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS & PORTFOLIO -->
+  <section id="keahlian" style="background:#fff;">
+    <div class="container">
+      <h2>Keahlian & <span>Portofolio</span></h2>
+
+      <h3 style="margin-bottom:14px; color:var(--muted);">Keahlian</h3>
+      <div class="skills">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">[Keahlian lain]</span>
+        <span class="skill">[Keahlian lain]</span>
+      </div>
+
+      <h3 style="margin:40px 0 14px; color:var(--muted);">Proyek & Karya</h3>
+      <div class="portfolio-grid">
+        <div class="project">
+          <div class="thumb">Proyek 1</div>
+          <div class="body">
+            <h3>[Nama Proyek 1]</h3>
+            <p>[Deskripsi singkat proyek, teknologi yang digunakan, dan tujuannya.]</p>
+          </div>
+        </div>
+        <div class="project">
+          <div class="thumb">Proyek 2</div>
+          <div class="body">
+            <h3>[Nama Proyek 2]</h3>
+            <p>[Deskripsi singkat proyek, teknologi yang digunakan, dan tujuannya.]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & CTA -->
+  <section class="contact" id="kontak">
+    <div class="container">
+      <h2>Mari Berkolaborasi</h2>
+      <p>Punya ide atau proyek? Saya senang berdiskusi. Hubungi saya langsung melalui WhatsApp.</p>
+      <!-- Format: https://wa.me/NOMOR (kode negara tanpa +, tanpa spasi/strip). Contoh Indonesia: 6281234567890 -->
+      <a class="btn-wa"
+         href="https://wa.me/6285736550140?text=Halo%2C%20saya%20tertarik%20dengan%20profil%20Anda."
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4h0c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.3zM12 21.8h0c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.9 9.9 0 0 1-1.5-5.2C2.1 6.4 6.5 2 12 2c2.7 0 5.2 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.5-4.5 9.9-9.9 9.9zm5.4-7.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+        </svg>
+        Hubungi Saya via WhatsApp
+      </a>
+      <p style="margin-top:24px;">
+        Instagram: <a href="https://instagram.com/aryandaru3" target="_blank" rel="noopener noreferrer" style="color:#fff; font-weight:600;">@aryandaru3</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Arya Pramudia Surya Ndaru. Dibuat dengan HTML, CSS & JavaScript.
+  </footer>
+
+</body>
+</html>
