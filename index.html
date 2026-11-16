@@ -990,6 +990,150 @@
       box-shadow: 0 12px 30px rgba(103, 232, 249, .45);
     }
 
+    /* ============================================================
+       PRELOADER — Modern Tech Split-Curtain
+    ============================================================ */
+
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: all;
+      overflow: hidden;
+    }
+
+    /* Two curtain panels */
+    .preloader-panel {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #040c18;
+      transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .preloader-panel.top { top: 0; }
+    .preloader-panel.bottom { bottom: 0; }
+
+    /* When splitting: panels slide away */
+    #preloader.split .preloader-panel.top    { transform: translateY(-100%); }
+    #preloader.split .preloader-panel.bottom { transform: translateY(100%); }
+
+    /* Done: remove interaction */
+    #preloader.done { pointer-events: none; }
+
+    /* Centre stage — counter + status text */
+    .preloader-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .preloader-counter {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(5rem, 18vw, 9rem);
+      font-weight: 700;
+      color: #edf5ff;
+      letter-spacing: -4px;
+      line-height: 1;
+      /* subtle gradient shimmer */
+      background: linear-gradient(135deg, #edf5ff 60%, #67e8f9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: opacity 0.25s ease;
+    }
+
+    .preloader-percent {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      font-weight: 500;
+      color: #67e8f9;
+      letter-spacing: 2px;
+      margin-left: 6px;
+      -webkit-text-fill-color: #67e8f9;
+      opacity: 0.75;
+    }
+
+    .preloader-status {
+      font-family: "Courier New", Courier, monospace;
+      font-size: clamp(.7rem, 2.2vw, .88rem);
+      color: #67e8f9;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      min-height: 1.4em;
+    }
+
+    /* Brand watermark top-left */
+    .preloader-brand {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,.18);
+      text-transform: uppercase;
+      z-index: 11;
+    }
+
+    /* Laser line — hidden by default */
+    .preloader-laser {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 2px;
+      background: #67e8f9;
+      box-shadow: 0 0 8px 2px rgba(103, 232, 249, .7),
+                  0 0 24px 4px rgba(103, 232, 249, .35);
+      border-radius: 2px;
+      z-index: 12;
+      opacity: 0;
+      transition: width 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.08s ease;
+    }
+
+    #preloader.laser-on .preloader-laser {
+      width: 100vw;
+      opacity: 1;
+    }
+
+    /* ---- Hero synced reveal ---- */
+    /* Override existing heroFadeUp to pause until preloader fires */
+    .hero-anim-1,
+    .hero-anim-2,
+    .hero-anim-3,
+    .hero-anim-4,
+    .hero-anim-photo {
+      animation: none !important;
+      opacity: 0;
+      transform: scale(0.95) translateY(16px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-anim-1.hero-reveal  { opacity: 1; transform: scale(1) translateY(0); transition-delay: 0s;    }
+    .hero-anim-2.hero-reveal  { opacity: 1; transform: scale(1) translateY(0); transition-delay: 0.1s;  }
+    .hero-anim-3.hero-reveal  { opacity: 1; transform: scale(1) translateY(0); transition-delay: 0.22s; }
+    .hero-anim-4.hero-reveal  { opacity: 1; transform: scale(1) translateY(0); transition-delay: 0.34s; }
+    .hero-anim-photo.hero-reveal {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      transition-delay: 0.14s;
+      animation: floatPhoto 5s ease-in-out 1.0s infinite alternate !important;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
         animation-duration: 0.01ms !important;
@@ -1325,6 +1469,31 @@
 </head>
 
 <body>
+
+  <!-- ============================================================
+       PRELOADER — Modern Tech Split-Curtain
+  ============================================================ -->
+  <div id="preloader" aria-hidden="true">
+    <!-- Top curtain panel -->
+    <div class="preloader-panel top"></div>
+    <!-- Bottom curtain panel -->
+    <div class="preloader-panel bottom"></div>
+
+    <!-- Brand watermark -->
+    <div class="preloader-brand">ARYA.</div>
+
+    <!-- Laser split line -->
+    <div class="preloader-laser"></div>
+
+    <!-- Counter + status -->
+    <div class="preloader-center">
+      <div style="display:flex;align-items:baseline;gap:4px;">
+        <span class="preloader-counter" id="plCounter">0</span>
+        <span class="preloader-percent">%</span>
+      </div>
+      <div class="preloader-status" id="plStatus">INITIALIZING SYSTEM...</div>
+    </div>
+  </div>
 
   <!-- NAVBAR -->
   <header>
@@ -1840,6 +2009,78 @@
   <script>
     // Enable JS animations smoothly
     document.documentElement.classList.add('has-js');
+
+    // ============================================================
+    // PRELOADER — Modern Tech Split-Curtain
+    // ============================================================
+    (function () {
+      const preloader  = document.getElementById('preloader');
+      const counter    = document.getElementById('plCounter');
+      const statusEl   = document.getElementById('plStatus');
+      const heroAnims  = document.querySelectorAll(
+        '.hero-anim-1,.hero-anim-2,.hero-anim-3,.hero-anim-4,.hero-anim-photo'
+      );
+
+      if (!preloader || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // If reduced motion or no preloader, reveal hero immediately
+        heroAnims.forEach(el => el.classList.add('hero-reveal'));
+        if (preloader) preloader.style.display = 'none';
+        return;
+      }
+
+      const statusMessages = [
+        'INITIALIZING SYSTEM...',
+        'LOADING IOT MODULES...',
+        'READY.'
+      ];
+
+      let pct = 0;
+      const duration = 1200; // ms total count-up
+      const fps      = 60;
+      const interval = duration / fps;
+      const step     = 100 / fps;
+
+      let statusIdx  = 0;
+      const statusTimer = setInterval(() => {
+        statusIdx = Math.min(statusIdx + 1, statusMessages.length - 1);
+        statusEl.textContent = statusMessages[statusIdx];
+      }, duration / (statusMessages.length - 1) + 20);
+
+      const tick = setInterval(() => {
+        pct = Math.min(pct + step, 100);
+        counter.textContent = Math.floor(pct);
+
+        if (pct >= 100) {
+          clearInterval(tick);
+          clearInterval(statusTimer);
+          counter.textContent = '100';
+          statusEl.textContent = 'READY.';
+
+          // --- Step 1: Laser line appears ---
+          setTimeout(() => {
+            preloader.classList.add('laser-on');
+          }, 80);
+
+          // --- Step 2: Curtain splits open ---
+          setTimeout(() => {
+            preloader.classList.add('split');
+
+            // Sync: reveal hero elements
+            heroAnims.forEach(el => el.classList.add('hero-reveal'));
+          }, 420);
+
+          // --- Step 3: Fully done ---
+          setTimeout(() => {
+            preloader.classList.add('done');
+            // Fade out center content
+            const center = preloader.querySelector('.preloader-center');
+            const brand  = preloader.querySelector('.preloader-brand');
+            if (center) center.style.opacity = '0';
+            if (brand)  brand.style.opacity  = '0';
+          }, 1300);
+        }
+      }, interval);
+    })();
 
     // Dynamic Year
     document.getElementById("year").textContent =
