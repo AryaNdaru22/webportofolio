@@ -1109,6 +1109,12 @@
       opacity: 1;
     }
 
+    /* Fade laser out as curtain splits */
+    #preloader.split .preloader-laser {
+      opacity: 0;
+      transition: opacity 0.18s ease;
+    }
+
     /* ---- Hero synced reveal ---- */
     /* Override existing heroFadeUp to pause until preloader fires */
     .hero-anim-1,
