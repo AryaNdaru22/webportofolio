@@ -258,6 +258,103 @@
       color: var(--muted);
     }
 
+    /* HOBBIES */
+
+    .hobbies-wrap {
+      margin-top: 36px;
+    }
+
+    .hobbies-title {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hobbies-subtitle {
+      color: var(--muted);
+      margin-bottom: 22px;
+      font-size: .95rem;
+      max-width: 650px;
+    }
+
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .hobby-card {
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      border-radius: 18px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .hobby-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(103, 232, 249, .4);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+
+    .hobby-img-wrap {
+      width: 100%;
+      height: 320px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+
+    .hobby-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s ease;
+    }
+
+    .hobby-card:hover .hobby-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .img-jogging {
+      object-position: center 20%;
+    }
+
+    .img-hiking {
+      object-position: center 40%;
+    }
+
+    .hobby-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 30px;
+      background: rgba(103, 232, 249, .12);
+      color: var(--cyan);
+      font-size: .8rem;
+      font-weight: 600;
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    .hobby-body h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .hobby-body p {
+      color: var(--muted);
+      font-size: .93rem;
+      line-height: 1.65;
+    }
+
     /* SKILLS */
 
     .skills {
@@ -376,6 +473,10 @@
       }
 
       .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hobbies-grid {
         grid-template-columns: 1fr;
       }
 
@@ -546,8 +647,56 @@
               </div>
             </div>
 
+            <div class="fact">
+              <div class="fact-icon">🏃</div>
+              <div>
+                <strong>Hobi & Aktivitas</strong>
+                <small>Olahraga jogging dan mendaki gunung</small>
+              </div>
+            </div>
+
           </article>
 
+        </div>
+
+        <!-- HOBBIES -->
+        <div class="hobbies-wrap">
+          <div class="hobbies-title">
+            <span style="color: var(--cyan);">✦</span> Hobi & Kegemaran
+          </div>
+          <p class="hobbies-subtitle">
+            Di luar kegiatan perkuliahan dan pemrograman, saya gemar berolahraga dan menjelajah alam bebas untuk menjaga kebugaran, stamina, serta kejernihan pikiran.
+          </p>
+
+          <div class="hobbies-grid">
+
+            <article class="card hobby-card">
+              <div class="hobby-img-wrap">
+                <img src="assets/jogging.jpg" alt="Hobi Olahraga Jogging Arya" class="img-jogging">
+              </div>
+              <div class="hobby-body">
+                <span class="hobby-tag">🏃 Olahraga</span>
+                <h3>Olahraga Jogging</h3>
+                <p>
+                  Rutin meluangkan waktu untuk jogging dan lari guna menjaga kebugaran jasmani, meningkatkan daya tahan tubuh, serta melatih kedisiplinan dan konsistensi diri.
+                </p>
+              </div>
+            </article>
+
+            <article class="card hobby-card">
+              <div class="hobby-img-wrap">
+                <img src="assets/hiking.jpg" alt="Hobi Mendaki Gunung Arya" class="img-hiking">
+              </div>
+              <div class="hobby-body">
+                <span class="hobby-tag">⛰️ Petualangan</span>
+                <h3>Mendaki Gunung</h3>
+                <p>
+                  Mengeksplorasi jalur pendakian dan puncak gunung untuk menguji ketahanan fisik dan mental, menikmati udara segar pegunungan, serta menyaksikan pesona lautan awan dari ketinggian.
+                </p>
+              </div>
+            </article>
+
+          </div>
         </div>
       </div>
     </section>
