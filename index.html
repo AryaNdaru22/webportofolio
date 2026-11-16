@@ -29,6 +29,7 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
@@ -36,6 +37,10 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a {
@@ -952,83 +957,324 @@
 
     /* RESPONSIVE */
 
-    @media(max-width:760px) {
+    @media(max-width:768px) {
 
+      section {
+        padding: 56px 0;
+      }
+
+      .container {
+        width: min(1100px, 92%);
+      }
+
+      /* NAVBAR & MOBILE MENU */
+      nav {
+        height: 64px;
+      }
+
+      .nav-links {
+        display: flex;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        padding: 16px 6% 24px;
+        background: rgba(7, 20, 38, .98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        gap: 6px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .5);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        transition: opacity .25s ease, transform .25s ease, visibility .25s;
+        pointer-events: none;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        padding: 12px 10px;
+        font-size: 1rem;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(170, 205, 240, .07);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+
+      .menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        background: rgba(13, 32, 56, .85);
+        color: var(--cyan);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        font-size: 1.25rem;
+        cursor: pointer;
+        transition: all .2s ease;
+      }
+
+      .menu-btn:active {
+        transform: scale(0.92);
+        background: rgba(85, 183, 255, .15);
+      }
+
+      /* HERO */
       .hero {
+        min-height: auto;
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 45px;
+        padding: 40px 0 55px;
+        gap: 32px;
+      }
+
+      .hero::before {
+        width: 280px;
+        height: 280px;
+        top: 5%;
+        right: -10%;
+        filter: blur(50px);
+        opacity: 0.5;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 7.5vw, 2.7rem);
+        line-height: 1.22;
+        margin: 14px 0;
       }
 
       .hero p {
+        font-size: .95rem;
+        line-height: 1.65;
         margin: auto;
       }
 
       .actions {
         justify-content: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .btn {
+        padding: 11px 18px;
+        font-size: .92rem;
       }
 
       .photo-wrap {
-        width: min(290px, 85%);
+        width: min(290px, 86%);
+        padding: 12px;
         grid-row: 1;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, .4);
+      }
+
+      .photo-frame {
+        aspect-ratio: 3 / 4;
+      }
+
+      .mode-btn {
+        padding: 5px 12px;
+        font-size: .78rem;
+      }
+
+      .photo-badge {
+        bottom: 10px;
+        padding: 4px 11px;
+        font-size: .72rem;
+      }
+
+      /* SECTIONS */
+      .section-head {
+        margin-bottom: 26px;
+      }
+
+      h2 {
+        font-size: clamp(1.75rem, 6vw, 2.3rem);
       }
 
       .about-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .card {
+        padding: 20px 18px;
+        border-radius: 16px;
+      }
+
+      /* HOBBIES */
+      .hobbies-wrap {
+        margin-top: 28px;
       }
 
       .hobbies-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
       }
 
+      .hobby-card {
+        padding: 16px;
+        gap: 14px;
+        border-radius: 16px;
+      }
+
+      .hobby-img-wrap {
+        height: 240px;
+      }
+
+      /* EXPERIENCE */
       .experience-layout {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
 
       .experience-featured {
         position: static;
+        padding: 18px 16px;
+        border-radius: 16px;
       }
 
       .exp-photo-wrap {
-        height: 300px;
+        height: 260px;
       }
 
+      .exp-item {
+        padding: 18px 16px;
+        border-radius: 16px;
+        gap: 10px;
+      }
+
+      .exp-header {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+      }
+
+      .exp-period {
+        font-size: .75rem;
+        padding: 3px 10px;
+      }
+
+      /* SKILLS */
       .skills {
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
 
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        padding: 20px 5%;
-        background: #091a30;
-        flex-direction: column;
+      .skill {
+        padding: 16px 14px;
+        border-radius: 14px;
+      }
+
+      .skill .symbol {
+        font-size: 1.25rem;
+        margin-bottom: 6px;
+      }
+
+      .skill h3 {
+        font-size: .95rem;
+      }
+
+      .skill p {
+        font-size: .82rem;
+        line-height: 1.45;
+      }
+
+      /* PROJECTS */
+      .project-list {
         gap: 14px;
       }
 
-      .nav-links.open {
-        display: flex;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-    }
-
-    @media(max-width:460px) {
-      .skills {
-        grid-template-columns: 1fr;
-      }
-
       .project {
+        padding: 20px 18px;
+        border-radius: 16px;
         grid-template-columns: 1fr;
+        position: relative;
+      }
+
+      .project > div {
+        padding-right: 48px;
       }
 
       .project-mark {
-        display: none;
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+        border-radius: 12px;
+      }
+
+      /* CONTACT */
+      .contact {
+        padding: 56px 0;
+      }
+
+      /* BACK TO TOP */
+      .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.15rem;
+      }
+
+      /* MOBILE SMOOTH SCROLL REVEAL ANIMATIONS */
+      .has-js .reveal {
+        transform: translateY(16px);
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      .has-js .reveal-stagger > * {
+        transform: translateY(16px);
+        transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      .has-js .reveal-stagger.active > *:nth-child(1) { transition-delay: 0.02s; }
+      .has-js .reveal-stagger.active > *:nth-child(2) { transition-delay: 0.06s; }
+      .has-js .reveal-stagger.active > *:nth-child(3) { transition-delay: 0.1s; }
+      .has-js .reveal-stagger.active > *:nth-child(4) { transition-delay: 0.14s; }
+      .has-js .reveal-stagger.active > *:nth-child(5) { transition-delay: 0.18s; }
+      .has-js .reveal-stagger.active > *:nth-child(6) { transition-delay: 0.22s; }
+    }
+
+    @media(max-width:380px) {
+      .hero {
+        padding: 30px 0 45px;
+      }
+
+      h1 {
+        font-size: 1.85rem;
+      }
+
+      .actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1614,7 +1860,14 @@
       });
     }
 
-    // Scroll Reveal with IntersectionObserver
+    // Close mobile nav on click outside
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== menuBtn) {
+        navLinks.classList.remove('open');
+      }
+    });
+
+    // Scroll Reveal with IntersectionObserver (Mobile & Desktop Optimized)
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1623,8 +1876,8 @@
         }
       });
     }, {
-      threshold: 0.12,
-      rootMargin: "0px 0px -40px 0px"
+      threshold: 0.08,
+      rootMargin: "0px 0px -25px 0px"
     });
 
     document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
