@@ -991,6 +991,24 @@
     }
 
     /* ============================================================
+       CURSOR SPOTLIGHT
+    ============================================================ */
+    #cursorSpotlight {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(
+        600px circle at var(--cx, -9999px) var(--cy, -9999px),
+        rgba(103, 232, 249, 0.08),
+        transparent 70%
+      );
+      transition: opacity .4s ease;
+      opacity: 0;
+    }
+    body:not(.touch-device) #cursorSpotlight { opacity: 1; }
+
+    /* ============================================================
        PRELOADER — Modern Tech Split-Curtain
     ============================================================ */
 
@@ -1475,6 +1493,9 @@
 </head>
 
 <body>
+
+  <!-- CURSOR SPOTLIGHT -->
+  <div id="cursorSpotlight" aria-hidden="true"></div>
 
   <!-- ============================================================
        PRELOADER — Modern Tech Split-Curtain
@@ -2086,6 +2107,52 @@
           }, 1300);
         }
       }, interval);
+    })();
+
+    // ============================================================
+    // CURSOR SPOTLIGHT — disabled on touch devices
+    // ============================================================
+    (function () {
+      const spotlight = document.getElementById('cursorSpotlight');
+      if (!spotlight) return;
+
+      // Detect touch-primary device and disable
+      if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+        document.body.classList.add('touch-device');
+        return;
+      }
+
+      let targetX = -9999, targetY = -9999;
+      let currentX = -9999, currentY = -9999;
+      let rafId = null;
+
+      document.addEventListener('mousemove', (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+        if (!rafId) rafId = requestAnimationFrame(update);
+      }, { passive: true });
+
+      function update() {
+        // Smooth lerp — fast enough to feel tight but still silky
+        currentX += (targetX - currentX) * 0.12;
+        currentY += (targetY - currentY) * 0.12;
+
+        spotlight.style.setProperty('--cx', currentX + 'px');
+        spotlight.style.setProperty('--cy', currentY + 'px');
+
+        const dx = Math.abs(targetX - currentX);
+        const dy = Math.abs(targetY - currentY);
+        rafId = (dx > 0.3 || dy > 0.3) ? requestAnimationFrame(update) : null;
+      }
+
+      // Hide when mouse leaves window
+      document.addEventListener('mouseleave', () => {
+        spotlight.style.setProperty('--cx', '-9999px');
+        spotlight.style.setProperty('--cy', '-9999px');
+        currentX = targetX = -9999;
+        currentY = targetY = -9999;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      });
     })();
 
     // Dynamic Year
