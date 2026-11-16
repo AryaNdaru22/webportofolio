@@ -593,6 +593,148 @@
       line-height: 1.65;
     }
 
+    /* EXPERIENCE */
+
+    .experience-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .experience-featured {
+      position: sticky;
+      top: 96px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 22px;
+      border-radius: 20px;
+    }
+
+    .exp-photo-wrap {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .exp-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .experience-featured:hover .exp-photo-wrap img {
+      transform: scale(1.04);
+    }
+
+    .exp-photo-badge {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      background: rgba(7, 20, 38, .88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(103, 232, 249, .4);
+      color: var(--cyan);
+      font-size: .8rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .4);
+    }
+
+    .exp-featured-company {
+      color: var(--cyan);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .exp-featured-info h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .exp-featured-info p {
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.6;
+    }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .exp-item {
+      padding: 22px 24px;
+      border-radius: 18px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .exp-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(103, 232, 249, .4);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, .3);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .exp-role {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .exp-company {
+      font-size: .92rem;
+      color: var(--cyan);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .exp-period {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(85, 183, 255, .12);
+      color: var(--blue);
+      font-size: .8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid rgba(85, 183, 255, .2);
+    }
+
+    .exp-desc {
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
     /* SKILLS */
 
     .skills {
@@ -839,6 +981,18 @@
         grid-template-columns: 1fr;
       }
 
+      .experience-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-featured {
+        position: static;
+      }
+
+      .exp-photo-wrap {
+        height: 300px;
+      }
+
       .skills {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -895,6 +1049,7 @@
       <div class="nav-links" id="navLinks">
         <a href="#home">Beranda</a>
         <a href="#about">Tentang</a>
+        <a href="#experience">Pengalaman</a>
         <a href="#skills">Keahlian</a>
         <a href="#portfolio">Proyek</a>
         <a href="#contact">Kontak</a>
@@ -1080,6 +1235,99 @@
 
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="eyebrow">Rekam jejak & profesionalitas</div>
+          <h2>Pengalaman Kerja</h2>
+          <p>
+            Pengalaman dalam industri hospitality, pelayanan pelanggan, dan operasional bar yang membentuk etos kerja, kedisiplinan, koordinasi tim, serta kepemimpinan.
+          </p>
+        </div>
+
+        <div class="experience-layout">
+
+          <!-- Featured Barista Card -->
+          <div class="experience-featured card reveal">
+            <div class="exp-photo-wrap">
+              <img src="assets/barista.jpg" alt="Arya saat bertugas sebagai Barista & Head Bar di Brickmad Cafe">
+              <div class="exp-photo-badge">
+                <span>☕</span> Barista & Head Bar
+              </div>
+            </div>
+            <div class="exp-featured-info">
+              <div class="exp-featured-company">Brickmad Cafe · Madiun</div>
+              <h3>Dedikasi, Presisi & Pelayanan</h3>
+              <p>
+                Membuktikan komitmen kerja nyata melalui peracikan menu kopi berstandar tinggi, koordinasi tim bar, dan menjaga kepuasan pelanggan secara konsisten.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Items -->
+          <div class="experience-list reveal-stagger">
+
+            <article class="card exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Barista & Head Bar</div>
+                  <div class="exp-company">Brickmad Cafe (Madiun)</div>
+                </div>
+                <span class="exp-period">Juni 2026 – Oktober 2026</span>
+              </div>
+              <p class="exp-desc">
+                Bertanggung jawab meracik dan menyajikan berbagai menu kopi maupun non-kopi dengan standar kualitas terbaik, mengelola operasional harian bar, menjaga kebersihan area kerja, serta berkoordinasi dalam manajemen tim bar untuk memastikan kepuasan pelanggan.
+              </p>
+            </article>
+
+            <article class="card exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Kasir dan Server</div>
+                  <div class="exp-company">Breakball8</div>
+                </div>
+                <span class="exp-period">20 April 2025 – 9 Desember 2025</span>
+              </div>
+              <p class="exp-desc">
+                Mengelola operasional kasir dan memberikan pelayanan pelanggan yang efisien, memproses transaksi, mencatat pesanan, serta menjaga kebersihan area kerja untuk memastikan pengalaman tamu yang positif.
+              </p>
+            </article>
+
+            <article class="card exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Casual Waiters</div>
+                  <div class="exp-company">Sentani Garden</div>
+                </div>
+                <span class="exp-period">18 Maret 2025 – 6 April 2025</span>
+              </div>
+              <p class="exp-desc">
+                Memberikan pelayanan terbaik kepada tamu mulai dari menyambut hingga menyajikan makanan, berkomunikasi efektif dalam tim maupun mandiri, menangani keluhan dengan ramah, dan tetap profesional di bawah tekanan.
+              </p>
+            </article>
+
+            <article class="card exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Casual Waiters</div>
+                  <div class="exp-company">Bah Bleng</div>
+                </div>
+                <span class="exp-period">16 Desember 2024 – 27 Desember 2025</span>
+              </div>
+              <p class="exp-desc">
+                Memberikan pelayanan profesional kepada pelanggan mulai dari menyambut hingga menyajikan hidangan, bekerja sama dalam tim, menangani keluhan, serta tetap berkinerja optimal di bawah tekanan.
+              </p>
+            </article>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
 
