@@ -1,245 +1,786 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil - Arya Pramudia Surya Ndaru</title>
-  <meta name="description" content="Profil pribadi Arya Pramudia Surya Ndaru - [JULUKAN]">
+  <title>Arya Pramudia Surya Ndaru | Portfolio</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
   <style>
     :root {
-      --primary: #1d4ed8;
-      --primary-dark: #1e3a8a;
-      --accent: #25d366;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #1e293b;
-      --muted: #64748b;
+      --bg: #071426;
+      --panel: #0d2038;
+      --text: #edf5ff;
+      --muted: #a9bad0;
+      --blue: #55b7ff;
+      --cyan: #67e8f9;
+      --line: rgba(170, 205, 240, .15);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+      font-family: "DM Sans", sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
     }
-    section { padding: 72px 20px; }
-    .container { max-width: 960px; margin: 0 auto; }
-    h2 { font-size: 1.8rem; margin-bottom: 18px; color: var(--primary-dark); }
-    h2 span { color: var(--primary); }
 
-    /* Hero */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(7, 20, 38, .9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: "Space Grotesk";
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .brand span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      color: white;
+      border: 1px solid var(--line);
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    /* HERO */
+
     .hero {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      color: #fff;
-      text-align: center;
-      padding: 90px 20px 80px;
+      min-height: 610px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 60px;
+      padding: 80px 0;
     }
-    .hero img {
-      width: 180px; height: 180px; object-fit: cover;
-      border-radius: 50%;
-      border: 5px solid rgba(255,255,255,0.9);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      margin-bottom: 22px;
-    }
-    .hero h1 { font-size: 2.4rem; margin-bottom: 6px; }
-    .hero .julukan {
-      display: inline-block;
-      background: rgba(255,255,255,0.18);
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .hero p.ringkasan { max-width: 620px; margin: 0 auto; opacity: 0.95; }
 
-    /* About */
+    .eyebrow {
+      color: var(--cyan);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: .78rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.7rem);
+      margin: 18px 0;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 590px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(100deg, #1687e8, #27b9d6);
+      color: #041321;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+    }
+
+    .photo-wrap {
+      width: min(330px, 80%);
+      justify-self: center;
+      padding: 12px;
+      border: 1px solid rgba(103, 232, 249, .35);
+      border-radius: 28px;
+      background: var(--panel);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, .35);
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      display: block;
+      border-radius: 19px;
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-head {
+      margin-bottom: 34px;
+    }
+
+    .section-head .eyebrow {
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin-top: 12px;
+      max-width: 650px;
+    }
+
+    /* ABOUT */
+
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
     }
+
     .card {
-      background: var(--card);
-      border-radius: 14px;
+      background: linear-gradient(145deg, #102944, #0d2038);
+      border: 1px solid var(--line);
+      border-radius: 18px;
       padding: 26px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
-    }
-    .card h3 { color: var(--primary); margin-bottom: 10px; }
-    .card ul { padding-left: 20px; }
-    .card li { margin-bottom: 6px; }
-
-    /* Skills */
-    .skills {
-      display: flex; flex-wrap: wrap; gap: 12px;
-    }
-    .skill {
-      background: #eff6ff;
-      color: var(--primary-dark);
-      border: 1px solid #bfdbfe;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 600;
     }
 
-    /* Portfolio */
-    .portfolio-grid {
+    .card p {
+      color: var(--muted);
+    }
+
+    .facts {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 14px;
     }
-    .project {
-      background: var(--card);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
-    }
-    .project .thumb {
-      height: 160px;
-      background: linear-gradient(135deg, #93c5fd, #3b82f6);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-weight: 700; font-size: 1.1rem;
-    }
-    .project .body { padding: 20px; }
-    .project h3 { margin-bottom: 6px; }
-    .project p { color: var(--muted); font-size: 0.95rem; }
 
-    /* Contact / CTA */
-    .contact {
-      background: var(--primary-dark);
-      color: #fff;
-      text-align: center;
+    .fact {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
     }
-    .contact h2 { color: #fff; }
-    .contact p { max-width: 560px; margin: 0 auto 28px; opacity: 0.92; }
-    .btn-wa {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 16px 32px;
-      border-radius: 999px;
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+
+    .fact-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: rgba(85, 183, 255, .12);
+      color: var(--cyan);
+      flex-shrink: 0;
     }
-    .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5); }
-    .btn-wa svg { width: 24px; height: 24px; fill: #fff; }
-    footer {
-      background: #0f172a;
-      color: #94a3b8;
-      text-align: center;
+
+    .fact strong {
+      display: block;
+    }
+
+    .fact small {
+      color: var(--muted);
+    }
+
+    /* SKILLS */
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .skill {
       padding: 20px;
-      font-size: 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--panel);
     }
 
-    /* Responsive */
-    @media (min-width: 720px) {
-      .about-grid { grid-template-columns: 1fr 1fr; }
-      .portfolio-grid { grid-template-columns: 1fr 1fr; }
-      .hero h1 { font-size: 3rem; }
+    .skill .symbol {
+      font-size: 1.4rem;
+      color: var(--cyan);
+      margin-bottom: 10px;
     }
-    @media (max-width: 480px) {
-      section { padding: 56px 16px; }
-      .hero h1 { font-size: 1.9rem; }
-      .btn-wa { font-size: 1rem; padding: 14px 24px; }
+
+    .skill h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .skill p {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    /* PORTFOLIO */
+
+    .project-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .project-tag {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 5px 10px;
+      border-radius: 30px;
+      background: rgba(103, 232, 249, .1);
+      color: var(--cyan);
+      font-size: .8rem;
+    }
+
+    .project-mark {
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: rgba(85, 183, 255, .12);
+      font-size: 2rem;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: linear-gradient(120deg, rgba(18, 100, 166, .22), rgba(12, 50, 75, .24));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 15px auto 25px;
+    }
+
+    .social {
+      margin-top: 18px;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 25px 0;
+      text-align: center;
+      color: #8095ad;
+      font-size: .85rem;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:760px) {
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 45px;
+      }
+
+      .hero p {
+        margin: auto;
+      }
+
+      .actions {
+        justify-content: center;
+      }
+
+      .photo-wrap {
+        width: min(270px, 75%);
+        grid-row: 1;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: #091a30;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    @media(max-width:460px) {
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .project-mark {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- HERO -->
-  <header class="hero" id="beranda">
-    <img src="foto-profil.jpg" alt="Foto profil Arya Pramudia Surya Ndaru">
-    <h1>Arya Pramudia Surya Ndaru</h1>
-    <span class="julukan">[JULUKAN, misal: Web Developer Enthusiast]</span>
-    <p class="ringkasan">
-      [Ringkasan singkat tentang diri Anda dalam 1–2 kalimat. Contoh: Mahasiswa Teknik Informatika yang gemar membangun website sederhana dan solusi digital untuk membantu usaha lokal.]
-    </p>
+  <!-- NAVBAR -->
+  <header>
+    <nav class="container">
+
+      <a class="brand" href="#home">
+        ARYA<span>.</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Beranda</a>
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#portfolio">Proyek</a>
+        <a href="#contact">Kontak</a>
+      </div>
+
+    </nav>
   </header>
 
-  <!-- ABOUT -->
-  <section id="tentang">
-    <div class="container">
-      <h2>Tentang <span>Saya</span></h2>
-      <div class="about-grid">
-        <div class="card">
-          <h3>Latar Belakang Pendidikan</h3>
-          <ul>
-            <li><strong>Politeknik Negeri Madiun</strong> - Prodi D3 Teknologi Informasi (sedang berjalan)</li>
-            <li>SMKN 1 Kota Madiun - Jurusan Teknik Kendaraan Ringan Otomotif (TKRO)</li>
-            <li>MTsN Kota Madiun</li>
-            <li>MIN Demangan, Kota Madiun</li>
-          </ul>
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="container hero" id="home">
+
+      <div>
+
+        <div class="eyebrow">
+          Halo, selamat datang di website saya
         </div>
-        <div class="card">
-          <h3>Minat & Hobi</h3>
+
+        <h1>
+          Saya <span>Arya Pramudia<br>
+            Surya Ndaru.</span>
+        </h1>
+
+        <p>
+          Mahasiswa Teknologi Informasi yang tertarik pada
+          pengembangan web, pemrograman, dan Internet of
+          Things (IoT). Saya senang belajar teknologi dan
+          membuat solusi sederhana yang bermanfaat.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#portfolio">
+            Lihat Proyek Saya ↗
+          </a>
+
+          <a class="btn btn-outline" href="#contact">
+            Hubungi Saya
+          </a>
+        </div>
+
+      </div>
+
+      <div class="photo-wrap">
+        <img src="assets/profile.jpg" alt="Foto profil Arya Pramudia Surya Ndaru">
+      </div>
+
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about">
+
+      <div class="container">
+
+        <div class="section-head">
+          <div class="eyebrow">Sedikit tentang saya</div>
+          <h2>Tentang Saya</h2>
+
           <p>
-            [Ceritakan minat dan hobi yang relevan dengan bidang IT, misal: mengikuti perkembangan teknologi, belajar desain UI/UX, atau mengembangkan proyek kecil di waktu luang.]
+            Saya percaya bahwa teknologi bukan hanya tentang
+            kode, tetapi juga tentang bagaimana menciptakan
+            sesuatu yang dapat membantu kehidupan sehari-hari.
           </p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SKILLS & PORTFOLIO -->
-  <section id="keahlian" style="background:#fff;">
-    <div class="container">
-      <h2>Keahlian & <span>Portofolio</span></h2>
+        <div class="about-grid">
 
-      <h3 style="margin-bottom:14px; color:var(--muted);">Keahlian</h3>
-      <div class="skills">
-        <span class="skill">HTML</span>
-        <span class="skill">CSS</span>
-        <span class="skill">JavaScript</span>
-        <span class="skill">[Keahlian lain]</span>
-        <span class="skill">[Keahlian lain]</span>
-      </div>
+          <article class="card">
 
-      <h3 style="margin:40px 0 14px; color:var(--muted);">Proyek & Karya</h3>
-      <div class="portfolio-grid">
-        <div class="project">
-          <div class="thumb">Proyek 1</div>
-          <div class="body">
-            <h3>[Nama Proyek 1]</h3>
-            <p>[Deskripsi singkat proyek, teknologi yang digunakan, dan tujuannya.]</p>
-          </div>
+            <h3 style="margin-bottom:12px">
+              Latar Belakang
+            </h3>
+
+            <p>
+              Saya adalah mahasiswa semester 3 program D3
+              Teknologi Informasi di Politeknik Negeri Madiun.
+              Sebelumnya, saya menempuh pendidikan di SMKN 1
+              Kota Madiun pada jurusan Teknik Kendaraan Ringan
+              Otomotif. Perjalanan belajar tersebut membuat
+              saya tertarik untuk terus mengembangkan kemampuan
+              di bidang teknologi.
+            </p>
+
+          </article>
+
+          <article class="card facts">
+
+            <div class="fact">
+              <div class="fact-icon">⌂</div>
+              <div>
+                <strong>Pendidikan saat ini</strong>
+                <small>D3 Teknologi Informasi · Politeknik Negeri Madiun</small>
+              </div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-icon">⌘</div>
+              <div>
+                <strong>Minat utama</strong>
+                <small>Internet of Things, pemrograman, dan pengembangan aplikasi</small>
+              </div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-icon">✦</div>
+              <div>
+                <strong>Prinsip belajar</strong>
+                <small>Terus mencoba, belajar dari proses, dan mengembangkan ide menjadi karya</small>
+              </div>
+            </div>
+
+          </article>
+
         </div>
-        <div class="project">
-          <div class="thumb">Proyek 2</div>
-          <div class="body">
-            <h3>[Nama Proyek 2]</h3>
-            <p>[Deskripsi singkat proyek, teknologi yang digunakan, dan tujuannya.]</p>
-          </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+      <div class="container">
+
+        <div class="section-head">
+          <div class="eyebrow">Yang sedang saya kembangkan</div>
+          <h2>Keahlian & Minat</h2>
+          <p>
+            Beberapa bidang yang pernah saya pelajari dan
+            gunakan dalam latihan maupun proyek perkuliahan.
+          </p>
+        </div>
+
+        <div class="skills">
+
+          <article class="skill">
+            <div class="symbol">〈/〉</div>
+            <h3>HTML & CSS</h3>
+            <p>Menyusun struktur dan tampilan halaman web.</p>
+          </article>
+
+          <article class="skill">
+            <div class="symbol">☕</div>
+            <h3>Java</h3>
+            <p>Dasar pemrograman dan pengembangan aplikasi.</p>
+          </article>
+
+          <article class="skill">
+            <div class="symbol">▣</div>
+            <h3>Android Studio</h3>
+            <p>Mempelajari pembuatan aplikasi Android.</p>
+          </article>
+
+          <article class="skill">
+            <div class="symbol">⌁</div>
+            <h3>ESP32 & IoT</h3>
+            <p>Menghubungkan mikrokontroler dengan sensor dan perangkat.</p>
+          </article>
+
+          <article class="skill">
+            <div class="symbol">◉</div>
+            <h3>Firebase</h3>
+            <p>Menggunakan layanan database untuk penyimpanan dan pemantauan data.</p>
+          </article>
+
+          <article class="skill">
+            <div class="symbol">▤</div>
+            <h3>Database</h3>
+            <p>Mempelajari pengelolaan data menggunakan MySQL.</p>
+          </article>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT & CTA -->
-  <section class="contact" id="kontak">
-    <div class="container">
-      <h2>Mari Berkolaborasi</h2>
-      <p>Punya ide atau proyek? Saya senang berdiskusi. Hubungi saya langsung melalui WhatsApp.</p>
-      <!-- Format: https://wa.me/NOMOR (kode negara tanpa +, tanpa spasi/strip). Contoh Indonesia: 6281234567890 -->
-      <a class="btn-wa"
-         href="https://wa.me/6285736550140?text=Halo%2C%20saya%20tertarik%20dengan%20profil%20Anda."
-         target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4h0c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.3zM12 21.8h0c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.9 9.9 0 0 1-1.5-5.2C2.1 6.4 6.5 2 12 2c2.7 0 5.2 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.5-4.5 9.9-9.9 9.9zm5.4-7.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
-        </svg>
-        Hubungi Saya via WhatsApp
-      </a>
-      <p style="margin-top:24px;">
-        Instagram: <a href="https://instagram.com/aryandaru3" target="_blank" rel="noopener noreferrer" style="color:#fff; font-weight:600;">@aryandaru3</a>
-      </p>
-    </div>
-  </section>
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
 
+      <div class="container">
+
+        <div class="section-head">
+          <div class="eyebrow">Pengalaman & pengembangan</div>
+          <h2>Proyek IoT, Otomasi & Simulasi</h2>
+
+          <p>
+            Beberapa proyek dan bidang pengembangan yang saya
+            kerjakan atau pelajari dalam teknologi Internet of
+            Things, otomasi, dan simulasi.
+          </p>
+        </div>
+
+        <div class="project-list">
+
+          <article class="card project">
+            <div>
+              <h3>Sistem Deteksi Gas Berbasis ESP32</h3>
+              <p style="margin-top:10px">
+                Simulasi dan perancangan alat pendeteksi kebocoran
+                gas menggunakan mikrokontroler ESP32 dan sensor
+                gas seri MQ pada platform Wokwi. Sistem dilengkapi
+                peringatan dini melalui alarm buzzer dan notifikasi
+                otomatis menggunakan bot Telegram.
+              </p>
+              <span class="project-tag">
+                ESP32 · Sensor MQ · Wokwi · Buzzer · Telegram
+              </span>
+            </div>
+            <div class="project-mark">♨</div>
+          </article>
+
+          <article class="card project">
+            <div>
+              <h3>Sistem Smart Farming Zero-Waste Terintegrasi</h3>
+              <p style="margin-top:10px">
+                Prototipe pertanian cerdas tanpa limbah yang
+                menghubungkan sistem kontrol lingkungan kandang
+                ayam otomatis dengan budidaya ikan lele
+                (akuakultur) dan media tanam hidroponik dalam
+                satu siklus ekosistem.
+              </p>
+              <span class="project-tag">
+                Smart Farming · Otomasi · Akuakultur · Hidroponik
+              </span>
+            </div>
+            <div class="project-mark">🌱</div>
+          </article>
+
+          <article class="card project">
+            <div>
+              <h3>Solusi Smart Home & Otomasi Komersial</h3>
+              <p style="margin-top:10px">
+                Pengembangan solusi Internet of Things bersama
+                AM TECHNOLOGY Jogja, meliputi perancangan
+                otomatisasi rumah pintar (smart home) untuk
+                mendukung efisiensi dan penghematan biaya listrik,
+                serta sistem robotika kustom sesuai kebutuhan
+                klien komersial.
+              </p>
+              <span class="project-tag">
+                AM TECHNOLOGY Jogja · Smart Home · Robotika · IoT
+              </span>
+            </div>
+            <div class="project-mark">⌂</div>
+          </article>
+
+          <article class="card project">
+            <div>
+              <h3>Berbagai Rangkaian Sensor & Aktuator ESP32</h3>
+              <p style="margin-top:10px">
+                Pemodelan dan simulasi rangkaian IoT menggunakan
+                kombinasi sensor suhu dan kelembapan DHT22,
+                sensor ultrasonik, modul relay, motor servo,
+                serta layar LCD untuk memahami integrasi
+                perangkat input dan output.
+              </p>
+              <span class="project-tag">
+                ESP32 · DHT22 · Ultrasonik · Relay · Servo · LCD
+              </span>
+            </div>
+            <div class="project-mark">⌁</div>
+          </article>
+
+          <article class="card project">
+            <div>
+              <h3>Tempat Sampah Otomatis Berbasis ESP32</h3>
+              <p style="margin-top:10px">
+                Proyek tempat sampah otomatis yang memanfaatkan
+                sensor ultrasonik untuk mendeteksi tingkat
+                kepenuhan dan servo untuk membuka atau menutup
+                tutup tempat sampah. Sensor MQ-2 digunakan untuk
+                mendeteksi gas atau bau, sedangkan data dapat
+                dipantau melalui Firebase.
+              </p>
+              <span class="project-tag">
+                ESP32 · Sensor MQ-2 · Ultrasonik · Servo · Firebase
+              </span>
+            </div>
+            <div class="project-mark">♧</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+      <div class="container">
+
+        <div class="eyebrow">Mari terhubung</div>
+
+        <h2>Punya ide atau ingin berdiskusi?</h2>
+
+        <p>
+          Jangan ragu untuk menghubungi saya. Saya terbuka
+          untuk bertukar informasi, berdiskusi, dan belajar
+          bersama mengenai teknologi.
+        </p>
+
+        <a class="btn btn-primary"
+          href="https://wa.me/6285736550140?text=Halo%20Arya%2C%20saya%20ingin%20menghubungi%20Anda." target="_blank"
+          rel="noopener noreferrer">
+
+          ✉ Hubungi Saya via WhatsApp
+
+        </a>
+
+        <div class="social">
+          Instagram:
+          <a href="https://www.instagram.com/aryandaru3/" target="_blank" rel="noopener noreferrer">
+            @Aryandaru3 ↗
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    &copy; 2026 Arya Pramudia Surya Ndaru. Dibuat dengan HTML, CSS & JavaScript.
+    <div class="container">
+      © <span id="year"></span>
+      Arya Pramudia Surya Ndaru.
+      Dibuat dengan semangat belajar dan teknologi.
+    </div>
   </footer>
 
+  <!-- JAVASCRIPT -->
+  <script>
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+  </script>
+
 </body>
+
 </html>
