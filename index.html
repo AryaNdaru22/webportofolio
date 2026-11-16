@@ -250,14 +250,17 @@
     }
 
     .photo-wrap {
-      width: min(330px, 80%);
+      width: min(340px, 85%);
       justify-self: center;
-      padding: 12px;
+      padding: 14px;
       border: 1px solid rgba(103, 232, 249, .35);
       border-radius: 28px;
       background: var(--panel);
       box-shadow: 0 25px 80px rgba(0, 0, 0, .35);
       animation: floatPhoto 5s ease-in-out infinite alternate;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     @keyframes floatPhoto {
@@ -271,11 +274,137 @@
       }
     }
 
-    .photo-wrap img {
+    .photo-mode-toggle {
+      display: inline-flex;
+      background: rgba(7, 20, 38, .85);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all .25s ease;
+    }
+
+    .mode-btn.active {
+      background: linear-gradient(100deg, #1687e8, #27b9d6);
+      color: #041321;
+      font-weight: 700;
+      box-shadow: 0 3px 12px rgba(39, 185, 214, .35);
+    }
+
+    .mode-btn:hover:not(.active) {
+      color: var(--text);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .photo-frame {
+      position: relative;
       width: 100%;
-      height: auto;
+      aspect-ratio: 3 / 4.15;
+      border-radius: 19px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #041321;
+      border: 1px solid rgba(170, 205, 240, .12);
+      transition: border-color .3s ease;
+    }
+
+    .photo-frame:hover {
+      border-color: rgba(103, 232, 249, .45);
+    }
+
+    .hero-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
       border-radius: 19px;
+      opacity: 0;
+      transform: scale(1.03);
+      transition: opacity .45s ease, transform .45s ease;
+      pointer-events: none;
+    }
+
+    .hero-photo.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    #photoCasual {
+      object-position: center 30%;
+    }
+
+    #photoFormal {
+      object-position: center top;
+    }
+
+    .photo-badge {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(7, 20, 38, .88);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 5px 13px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .4);
+      transition: all .3s ease;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 8px var(--blue);
+      transition: background-color .3s ease, box-shadow .3s ease;
+    }
+
+    .badge-dot.dot-cyan {
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+    }
+
+    .photo-caption-hint {
+      margin-top: 10px;
+      font-size: .74rem;
+      color: var(--muted);
+      opacity: .8;
+      transition: opacity .2s, color .2s;
+    }
+
+    .photo-wrap:hover .photo-caption-hint {
+      opacity: 1;
+      color: var(--cyan);
     }
 
     /* SECTION */
@@ -698,7 +827,7 @@
       }
 
       .photo-wrap {
-        width: min(270px, 75%);
+        width: min(290px, 85%);
         grid-row: 1;
       }
 
@@ -809,8 +938,31 @@
 
       </div>
 
-      <div class="photo-wrap">
-        <img src="assets/profile.jpg" alt="Foto profil Arya Pramudia Surya Ndaru">
+      <div class="photo-wrap" id="photoWrap">
+        <!-- Mode Switcher -->
+        <div class="photo-mode-toggle" role="tablist" aria-label="Pilih gaya foto">
+          <button type="button" class="mode-btn active" id="btnFormal" role="tab" aria-selected="true" aria-label="Tampilan Formal">
+            <span>👔</span> Formal
+          </button>
+          <button type="button" class="mode-btn" id="btnCasual" role="tab" aria-selected="false" aria-label="Tampilan Santai">
+            <span>☕</span> Santai
+          </button>
+        </div>
+
+        <!-- Photo Frame -->
+        <div class="photo-frame" id="photoFrame" title="Klik untuk beralih antara gaya formal & santai">
+          <img src="assets/profile.jpg" alt="Foto Formal Arya Pramudia Surya Ndaru" class="hero-photo active" id="photoFormal">
+          <img src="assets/profile-casual.jpg" alt="Foto Santai Arya Pramudia Surya Ndaru" class="hero-photo" id="photoCasual">
+
+          <div class="photo-badge" id="photoBadge">
+            <span class="badge-dot"></span>
+            <span id="badgeText">Formal · Mahasiswa TI</span>
+          </div>
+        </div>
+
+        <div class="photo-caption-hint">
+          ⇄ Klik foto atau tombol untuk ganti gaya
+        </div>
       </div>
 
     </section>
@@ -1165,6 +1317,54 @@
         navLinks.classList.remove("open");
       });
     });
+
+    // Hero Photo Mode Switcher (Formal & Santai)
+    const btnFormal = document.getElementById('btnFormal');
+    const btnCasual = document.getElementById('btnCasual');
+    const photoFormal = document.getElementById('photoFormal');
+    const photoCasual = document.getElementById('photoCasual');
+    const photoFrame = document.getElementById('photoFrame');
+    const badgeText = document.getElementById('badgeText');
+    const badgeDot = document.querySelector('.photo-badge .badge-dot');
+
+    function setPhotoMode(mode) {
+      if (mode === 'casual') {
+        btnFormal.classList.remove('active');
+        btnFormal.setAttribute('aria-selected', 'false');
+        btnCasual.classList.add('active');
+        btnCasual.setAttribute('aria-selected', 'true');
+        photoFormal.classList.remove('active');
+        photoCasual.classList.add('active');
+        badgeText.textContent = 'Santai · Keseharian';
+        if (badgeDot) badgeDot.classList.add('dot-cyan');
+      } else {
+        btnCasual.classList.remove('active');
+        btnCasual.setAttribute('aria-selected', 'false');
+        btnFormal.classList.add('active');
+        btnFormal.setAttribute('aria-selected', 'true');
+        photoCasual.classList.remove('active');
+        photoFormal.classList.add('active');
+        badgeText.textContent = 'Formal · Mahasiswa TI';
+        if (badgeDot) badgeDot.classList.remove('dot-cyan');
+      }
+    }
+
+    if (btnFormal && btnCasual && photoFormal && photoCasual && photoFrame) {
+      btnFormal.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setPhotoMode('formal');
+      });
+
+      btnCasual.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setPhotoMode('casual');
+      });
+
+      photoFrame.addEventListener('click', () => {
+        const isCurrentlyCasual = photoCasual.classList.contains('active');
+        setPhotoMode(isCurrentlyCasual ? 'formal' : 'casual');
+      });
+    }
 
     // Scroll Reveal with IntersectionObserver
     const revealObserver = new IntersectionObserver((entries) => {
